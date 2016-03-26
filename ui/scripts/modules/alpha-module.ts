@@ -1,5 +1,5 @@
-/// <reference path="../../../bower_components/definitelytyped/requirejs/require.d.ts" />
-/// <reference path="../../../bower_components/definitelytyped/jquery/jquery.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/requirejs/require.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
 
 class AlphaModule {
 
