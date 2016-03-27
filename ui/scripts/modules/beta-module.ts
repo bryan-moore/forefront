@@ -1,7 +1,7 @@
 /// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
 /// <reference path="../../../bower_components/DefinitelyTyped/requirejs/require.d.ts" />
 
-class AlphaModule {
+class BetaModule {
 
     //private vars
 
@@ -18,9 +18,9 @@ class AlphaModule {
     }
 
     public init() {
-        console.log('alpha module');
+        console.log('beta module');
     }
 }
 
-var _AlphaModule = new AlphaModule();
-export = _AlphaModule;
+var _BetaModule = new BetaModule();
+export = _BetaModule;

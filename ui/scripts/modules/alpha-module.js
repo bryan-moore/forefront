@@ -1,3 +1,4 @@
+"use strict";
 var AlphaModule = (function () {
     function AlphaModule() {
     }
@@ -6,7 +7,9 @@ var AlphaModule = (function () {
     AlphaModule.prototype.pubFunction = function () {
     };
     AlphaModule.prototype.init = function () {
-        console.log('example');
+        console.log('alpha module');
     };
     return AlphaModule;
 }());
+var _AlphaModule = new AlphaModule();
+module.exports = _AlphaModule;

@@ -22,11 +22,11 @@ module.exports = function(grunt) {
 	          result["ui/scripts/" + filename.replace(".js", ".min.js")] = "ui/scripts/" + filename;
 	        });
 
-	        result["ui/scripts/static_scripts.min.js"] =
+	        result["ui/scripts/staticscripts.min.js"] =
 				  [
             "ui/scripts/libraries/jquery-2.2.2.min.js",
   					"ui/scripts/libraries/modernizr-custom.js",
-  					"ui/scripts/libraries/require.min.js"
+  					"ui/scripts/libraries/require.js"
           ];
 	        return result;
 		    }()
@@ -36,10 +36,39 @@ module.exports = function(grunt) {
       default : {
         src: ["scripts/*.ts", "!node_modules/**/*.ts"]
       }
+    },
+    requirejs:{
+      compile:
+			{
+			  options:
+				{
+				    name: "main",
+				    out: "ui/scripts/requiredscripts.min.js",
+				    baseUrl: "ui/scripts",
+				    mainConfigFile: "ui/scripts/main.js",
+				    removeCombined: false,
+				    findNestedDependencies: true,
+				    preserveLicenseComments: false,
+				    logLevel: 0,
+				    optimize: "uglify", //uglify
+				    paths: function () {
+
+				      var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }),
+							result = {};
+
+				        individualFiles.forEach(function (file) {
+				            result[file.replace(".js", "").replace(".min", "")] = "empty:";
+				        });
+				        return result;
+
+				    }()
+				}
+			}
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   //grunt.loadNpmTasks('grunt-contrib-less');
   //grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -47,5 +76,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['ts']);
-  grunt.registerTask('staticjs','uglify:sitefiles');
+  grunt.registerTask('static','uglify:sitefiles');
+  grunt.registerTask('require','requirejs');
 };
