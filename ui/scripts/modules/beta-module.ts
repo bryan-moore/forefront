@@ -6,7 +6,7 @@ class BetaModule {
     //private vars
 
     constructor() {
-        //init();
+        this.init();
     }
 
     private privFunction() {
@@ -18,7 +18,7 @@ class BetaModule {
     }
 
     public init() {
-        console.log('beta module');
+      console.log("beta module loaded");
     }
 }
 

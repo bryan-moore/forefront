@@ -6,12 +6,12 @@ class NavigationModule {
     //private vars
 
     constructor() {
-      var base = this;
       this.init();
     }
 
     public init() {
-        console.log('nav module');
+      console.log('nav module loaded');
+      $('nav').addClass('module-loaded');
     }
 }
 

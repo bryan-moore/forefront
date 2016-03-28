@@ -1,5 +1,6 @@
 bower_components
 .DS_Store
+.tscache
 
 # Logs
 logs

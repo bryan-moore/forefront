@@ -34,7 +34,22 @@ module.exports = function(grunt) {
     },
     ts: {
       default : {
-        src: ["scripts/*.ts", "!node_modules/**/*.ts"]
+        src: ["ui/scripts/**/*.ts", "!node_modules/**/*.ts"],
+        options: {
+          keepDirectoryHierarchy: true, //Path component to cut off when mapping the source files to dest files.  If keepDirectoryHierarchy option is false or not set, it is output as follows. It is same way as the tsc.
+					references:
+					[
+					  "core",       //lib.core.d.ts
+					  "dom",        //lib.dom.d.ts
+					  //"scriptHost", //lib.scriptHost.d.ts
+					  //"webworker",  //lib.webworker.d.ts
+					],
+					module: 'amd', //or commonjs
+					target: 'es5', //or es3
+					sourceMap: false,
+					declaration: false,
+					removeComments: false,
+        }
       }
     },
     requirejs:{
@@ -54,12 +69,14 @@ module.exports = function(grunt) {
 				    paths: function () {
 
 				      var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }),
-							result = {};
 
-				        individualFiles.forEach(function (file) {
-				            result[file.replace(".js", "").replace(".min", "")] = "empty:";
-				        });
-				        return result;
+              result = {};
+
+			        individualFiles.forEach(function (file) {
+			            result[file.replace(".js", "").replace(".min", "")] = "empty:";
+			        });
+
+			        return result;
 
 				    }()
 				}
@@ -67,6 +84,7 @@ module.exports = function(grunt) {
     }
   });
 
+  //load tasks
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   //grunt.loadNpmTasks('grunt-contrib-less');
@@ -74,7 +92,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-ts');
 
-  // Default task(s).
+  //define tasks
   grunt.registerTask('default', ['ts']);
   grunt.registerTask('static','uglify:sitefiles');
   grunt.registerTask('require','requirejs');

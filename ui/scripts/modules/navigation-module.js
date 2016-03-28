@@ -1,13 +1,15 @@
-"use strict";
-var NavigationModule = (function () {
-    function NavigationModule() {
-        var base = this;
-        this.init();
-    }
-    NavigationModule.prototype.init = function () {
-        console.log('nav module');
-    };
-    return NavigationModule;
-}());
-var _NavigationModule = new NavigationModule();
-module.exports = _NavigationModule;
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    var NavigationModule = (function () {
+        function NavigationModule() {
+            this.init();
+        }
+        NavigationModule.prototype.init = function () {
+            console.log('nav module loaded');
+            $('nav').addClass('module-loaded');
+        };
+        return NavigationModule;
+    }());
+    var _NavigationModule = new NavigationModule();
+    return _NavigationModule;
+});

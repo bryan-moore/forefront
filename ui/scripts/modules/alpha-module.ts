@@ -6,7 +6,7 @@ class AlphaModule {
     //private vars
 
     constructor() {
-        //init();
+        this.init();
     }
 
     private privFunction() {
@@ -18,7 +18,7 @@ class AlphaModule {
     }
 
     public init() {
-        console.log('alpha module');
+        console.log("alpha module loaded");
     }
 }
 
