@@ -24,9 +24,9 @@ module.exports = function(grunt) {
 
 	        result["ui/scripts/staticscripts.min.js"] =
 				  [
-            "ui/scripts/libraries/jquery-2.2.2.min.js",
-  					"ui/scripts/libraries/modernizr-custom.js",
-  					"ui/scripts/libraries/require.js"
+            "ui/scripts/vendor/jquery-2.2.2.min.js",
+  					"ui/scripts/vendor/modernizr-custom.js",
+  					"ui/scripts/vendor/require.js"
           ];
 	        return result;
 		    }()
