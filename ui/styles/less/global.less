@@ -1,5 +1,7 @@
 //global styles
 
+@import 'resources.less';
+
 html {
   box-sizing: border-box;
 }
@@ -7,10 +9,15 @@ html {
   box-sizing: inherit;
 }
 
-html, button, input, select, textarea,
+body {
+  background: @dark;
+}
+
+html, button, input, select, textarea, a,
 .pure-g [class *= "pure-u"] {
     /* Set your content font stack here: */
     font-family: Georgia, Times, "Times New Roman", serif;
+    color: @light;
 }
 
 h1, h2, h3, h4, h5 {
@@ -53,7 +60,7 @@ h5 {
 	}
 
 	@media(max-width:@phone-break){
-		
+
 	}
 
 }
@@ -73,7 +80,7 @@ h5 {
 	}
 
 	@media(max-width:@phone-break){
-		
+
 	}
 
 }
@@ -93,7 +100,7 @@ h5 {
 	}
 
 	@media(max-width:@phone-break){
-		
+
 	}
 
 }
