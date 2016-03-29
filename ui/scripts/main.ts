@@ -19,7 +19,6 @@ function loadRequiredComponents()
   console.log("required components loaded");
   requirejs(
   [
-    "plugins/jquery.hoverIntent.minified",
     "modules/navigation-module"
   ]);
 }

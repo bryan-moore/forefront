@@ -1,5 +1,10 @@
 module.exports = function(grunt) {
 
+  requireExcludedFiles = [
+    'modules/*.js',
+		'plugins/*.js',
+	];
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -14,7 +19,7 @@ module.exports = function(grunt) {
       sitefiles:
 			{
 		    files: function () {
-	        var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }),
+	        var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }, requireExcludedFiles),
 				  result = {};
 
 	        //We loop through all the files that are excluded from and create a minified version
@@ -68,13 +73,15 @@ module.exports = function(grunt) {
 				    optimize: "uglify", //uglify
 				    paths: function () {
 
-				      var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }),
+              //exclude pre-minified files, should be conditionaly required
+				      var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }, requireExcludedFiles),
 
               result = {};
 
 			        individualFiles.forEach(function (file) {
-			            result[file.replace(".js", "").replace(".min", "")] = "empty:";
+			            result[file.replace(".js", "")] = "empty:";
 			        });
+              console.log(result);
 
 			        return result;
 
