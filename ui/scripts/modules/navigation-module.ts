@@ -3,16 +3,15 @@
 
 class NavigationModule {
 
-    //private vars
+  //private vars
 
-    constructor() {
-      this.init();
-    }
+  constructor() {
+    this.init();
+  }
 
-    public init() {
-      console.log('nav module loaded');
-      $('nav').addClass('module-loaded');
-    }
+  public init() {
+    console.log('nav module loaded');
+  }
 }
 
 var _NavigationModule = new NavigationModule();

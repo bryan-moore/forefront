@@ -3,23 +3,23 @@
 
 class BetaModule {
 
-    //private vars
+  //private vars
 
-    constructor() {
-        this.init();
-    }
+  constructor() {
+    this.init();
+  }
 
-    private privFunction() {
-        //private to this class
-    }
+  private privFunction() {
+    //private to this class
+  }
 
-    public pubFunction() {
-        //accessable to other modules
-    }
+  public pubFunction() {
+    //accessable to other modules
+  }
 
-    public init() {
-      console.log("beta module loaded");
-    }
+  public init() {
+    console.log("beta module loaded");
+  }
 }
 
 var _BetaModule = new BetaModule();

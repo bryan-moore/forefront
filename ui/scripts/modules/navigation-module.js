@@ -6,7 +6,6 @@ define(["require", "exports"], function (require, exports) {
         }
         NavigationModule.prototype.init = function () {
             console.log('nav module loaded');
-            $('nav').addClass('module-loaded');
         };
         return NavigationModule;
     }());

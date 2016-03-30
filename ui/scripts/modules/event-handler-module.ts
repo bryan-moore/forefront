@@ -1,7 +1,7 @@
 /// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
 /// <reference path="../../../bower_components/DefinitelyTyped/requirejs/require.d.ts" />
 
-class AlphaModule {
+class EventHandlerModule {
 
   //private vars
 
@@ -9,18 +9,10 @@ class AlphaModule {
     this.init();
   }
 
-  private privFunction() {
-    //private to this class
-  }
-
-  public pubFunction() {
-    //accessable to other modules
-  }
-
   public init() {
-    console.log("alpha module loaded");
+    console.log('event handler module loaded');
   }
 }
 
-var _AlphaModule = new AlphaModule();
-export = _AlphaModule;
+var _EventHandlerModule = new EventHandlerModule();
+export = _EventHandlerModule;

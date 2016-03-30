@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     'vendor/*.js',
     'modules/*.js',
     'plugins/*.js',
-    '!**/*.min.js'
+    '**/*.min.js'
   ];
 
   // Project configuration.
@@ -14,25 +14,16 @@ module.exports = function(grunt) {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
-      /*build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
-      },*/
       sitefiles: {
         files: function() {
-          //var individualFiles = grunt.file.expand({ cwd: "ui/scripts/" }, requireExcludedFiles),
+
           result = {};
 
-          //We loop through all the files that are excluded from and create a minified version
-          /*individualFiles.forEach(function (filename) {
-            result["ui/scripts/" + filename.replace(".js", ".min.js")] = "ui/scripts/" + filename;
-          });*/
-
           result["ui/scripts/staticscripts.min.js"] = [
-            //"ui/scripts/vendor/jquery-2.2.2.min.js",
-            "ui/scripts/vendor/modernizr-custom.js",
+            "ui/scripts/vendor/modernizr-custom.min.js",
             "ui/scripts/vendor/require.js"
           ];
+
           return result;
         }()
       }
@@ -80,7 +71,6 @@ module.exports = function(grunt) {
             individualFiles.forEach(function(file) {
               result[file.replace(".js", "")] = "empty:";
             });
-            console.log(result);
 
             return result;
 

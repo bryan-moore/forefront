@@ -15,19 +15,24 @@ require.config({
   "shim":
   {
     "plugins/jquery.hoverIntent.min": ["vendor/jquery-2.2.2.min"],
+    "modules/navigation-module": ["plugins/jquery.hoverIntent.min"],
     "plugins/owl.carousel.min": ["vendor/jquery-2.2.2.min"]
   }
 });
 
 function loadRequiredComponents() {
-  console.log("required components loaded");
+  console.log("get required components");
   requirejs(
     [
-      "modules/navigation-module"
+      "modules/event-handler-module"
     ]);
 }
 
 function loadOptionalComponents() {
+  console.log("find optional components");
+  if (document.getElementsByTagName("nav").length > 0) {
+    requirejs(["modules/navigation-module"]);
+  }
   if (document.getElementsByClassName("uses-alpha").length > 0) {
     requirejs(["modules/alpha-module"]);
   }
@@ -36,9 +41,6 @@ function loadOptionalComponents() {
   }
   if (document.getElementsByClassName("uses-owl-carousel").length > 0) {
     requirejs(["plugins/owl.carousel.min"]);
-  }
-  if (document.getElementsByClassName("uses-hover-intent").length > 0) {
-    requirejs(["plugins/jquery.hoverIntent.min"]);
   }
 }
 
