@@ -1,3 +1,17 @@
+function ready(fn) {
+    if (document.readyState != 'loading') {
+        fn();
+    }
+    else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+require.config({
+    "shim": {
+        "plugins/jquery.hoverIntent.min": ["vendor/jquery-2.2.2.min"],
+        "plugins/owl.carousel.min": ["vendor/jquery-2.2.2.min"]
+    }
+});
 function loadRequiredComponents() {
     console.log("required components loaded");
     requirejs([
@@ -5,18 +19,21 @@ function loadRequiredComponents() {
     ]);
 }
 function loadOptionalComponents() {
-    console.log("looking for optionals");
-    if ($(".uses-alpha").length > 0) {
+    if (document.getElementsByClassName("uses-alpha").length > 0) {
         requirejs(["modules/alpha-module"]);
     }
-    if ($(".uses-beta").length > 0) {
+    if (document.getElementsByClassName("uses-beta").length > 0) {
         requirejs(["modules/beta-module"]);
     }
-    if ($(".owl-carousel").length > 0) {
+    if (document.getElementsByClassName("uses-owl-carousel").length > 0) {
         requirejs(["plugins/owl.carousel.min"]);
     }
+    if (document.getElementsByClassName("uses-hover-intent").length > 0) {
+        requirejs(["plugins/jquery.hoverIntent.min"]);
+    }
 }
-$(document).ready(function () {
+function start() {
     loadRequiredComponents();
     loadOptionalComponents();
-});
+}
+ready(start);

@@ -19,6 +19,10 @@ a,
   /* Set your content font stack here: */
   font-family: Georgia, Times, "Times New Roman", serif;
   color: #eee;
+  text-decoration: none;
+}
+ul {
+  padding-left: 20px;
 }
 /* Hide only visually, but have it available for screenreaders: h5bp.com/v */
 .visuallyhidden {
@@ -40,6 +44,9 @@ a,
   overflow: visible;
   position: static;
   width: auto;
+}
+.pagecontainer {
+  margin: 0 20px;
 }
 @media print, (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
