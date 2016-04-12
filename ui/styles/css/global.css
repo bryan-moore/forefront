@@ -7,7 +7,8 @@ html {
   box-sizing: inherit;
 }
 body {
-  background: #222;
+  margin: 0 auto;
+  max-width: 1024px;
 }
 html,
 button,
@@ -18,11 +19,12 @@ a,
 .pure-g [class*="pure-u"] {
   /* Set your content font stack here: */
   font-family: Georgia, Times, "Times New Roman", serif;
-  color: #eee;
-  text-decoration: none;
 }
 ul {
   padding-left: 20px;
+}
+.l-box {
+  padding: 20px;
 }
 /* Hide only visually, but have it available for screenreaders: h5bp.com/v */
 .visuallyhidden {
@@ -45,8 +47,9 @@ ul {
   position: static;
   width: auto;
 }
-.pagecontainer {
-  margin: 0 20px;
+footer {
+  background: #222;
+  color: #eee;
 }
 @media print, (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
@@ -111,37 +114,4 @@ ul {
   h3 {
     page-break-after: avoid;
   }
-}
-.thanks {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-  white-space: nowrap;
-}
-.thanks h2,
-.thanks a {
-  padding: 1vw 0;
-}
-.thanks h2 {
-  margin: 0;
-  font-size: 5vw;
-  font-weight: normal;
-}
-.thanks a {
-  display: block;
-  font-size: 4vw;
-}
-.thanks .logo {
-  height: 6vw;
-  padding-top: 3vw;
-}
-.end {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #4e4e4e;
 }

@@ -124,6 +124,8 @@ module.exports = function(grunt) {
           'ui/styles/main.min.css': [
             'ui/styles/css/pure.css',
             'ui/styles/css/grids-responsive.css',
+            'ui/styles/css/menus.css',
+            'ui/styles/css/buttons.css',
             'ui/styles/css/global.css',
             'ui/styles/css/icons.css',
             'ui/styles/css/forms.css',
@@ -147,8 +149,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ts');
 
   //define tasks
-  grunt.registerTask('default', 'ts');
-  grunt.registerTask('static', 'uglify:sitefiles');
-  grunt.registerTask('require', 'requirejs');
+  grunt.registerTask('scripts', ['ts','requirejs','uglify:sitefiles']);
   grunt.registerTask('styles', ['less', 'cssmin']);
+  grunt.registerTask('default', ['scripts','styles']);
 };
