@@ -1,5 +1,7 @@
-/// <reference path="../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
 /// <reference path="../../bower_components/DefinitelyTyped/requirejs/require.d.ts" />
+
+declare var isModernBrowser : boolean;
+window['isModernBrowser'] = ('visibilityState' in document);
 
 //vanilla js ready listener
 function ready(fn) {
@@ -10,18 +12,20 @@ function ready(fn) {
   }
 }
 
-//plugin dependencies
 require.config({
-  "shim":
+  baseUrl: 'ui/scripts',
+  paths: {
+    bower: '../../bower_components',
+  },
+  shim:
   {
-    "plugins/jquery.hoverIntent.min": ["vendor/jquery-2.2.2.min"],
-    "modules/navigation-module": ["plugins/jquery.hoverIntent.min"],
-    "plugins/owl.carousel.min": ["vendor/jquery-2.2.2.min"]
+    /*"plugins/zepto-hoover": ["bower/zepto/zepto.min"],
+    "modules/navigation-module": ["plugins/zepto-hoover"],
+    "bower/owl.carousel/dist/owl.carousel.min": ["bower/zepto/zepto.min"]*/
   }
 });
 
-function loadRequiredComponents() {
-  console.log("get required components");
+function loadMandatoryComponents() {
   requirejs(
     [
       "modules/event-handler-module"
@@ -29,7 +33,6 @@ function loadRequiredComponents() {
 }
 
 function loadOptionalComponents() {
-  console.log("find optional components");
   if (document.getElementsByTagName("nav").length > 0) {
     requirejs(["modules/navigation-module"]);
   }
@@ -39,13 +42,13 @@ function loadOptionalComponents() {
   if (document.getElementsByClassName("uses-beta").length > 0) {
     requirejs(["modules/beta-module"]);
   }
-  if (document.getElementsByClassName("uses-owl-carousel").length > 0) {
-    requirejs(["plugins/owl.carousel.min"]);
-  }
+  /*if (document.getElementsByClassName("uses-owl-carousel").length > 0) {
+    requirejs(["bower/owl.carousel/dist/owl.carousel.min"]);
+  }*/
 }
 
 function start() {
-  loadRequiredComponents();
+  loadMandatoryComponents();
   loadOptionalComponents();
 }
 ready(start)

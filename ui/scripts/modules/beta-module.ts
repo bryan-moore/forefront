@@ -1,4 +1,4 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/zepto/zepto.d.ts" />
 /// <reference path="../../../bower_components/DefinitelyTyped/requirejs/require.d.ts" />
 
 class BetaModule {

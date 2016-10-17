@@ -20,7 +20,6 @@ module.exports = function(grunt) {
           result = {};
 
           result["ui/scripts/staticscripts.min.js"] = [
-            "ui/scripts/vendor/modernizr-custom.min.js",
             "ui/scripts/vendor/require.js"
           ];
 
@@ -73,7 +72,6 @@ module.exports = function(grunt) {
             });
 
             return result;
-
           }()
         }
       }
@@ -122,8 +120,6 @@ module.exports = function(grunt) {
       sitefiles: {
         files: {
           'ui/styles/main.min.css': [
-            'ui/styles/css/pure.css',
-            'ui/styles/css/grids-responsive.css',
             'ui/styles/css/menus.css',
             'ui/styles/css/buttons.css',
             'ui/styles/css/global.css',
@@ -134,8 +130,35 @@ module.exports = function(grunt) {
             'ui/styles/css/blocks.css',
             'ui/styles/css/owl.carousel.css',
             'ui/styles/css/owl.theme.css',
+          ],
+          'ui/styles/critical.min.css': [
+            'ui/styles/css/pure.css',
+            'ui/styles/css/grids-responsive.css'
           ]
         }
+      }
+    },
+    watch: {
+      markup: {
+        files: ['index.html'],
+        tasks: '',
+        options: {
+          livereload: true
+        },
+      },
+      scripts: {
+        files: ['ui/scripts/main.ts', 'ui/scripts/modules/*.ts'],
+        tasks: ['scripts'],
+        options: {
+          livereload: true
+        },
+      },
+      styles: {
+        files: 'ui/styles/*.less',
+        tasks: ['styles'],
+        options: {
+          livereload: true,
+        },
       }
     }
   });
@@ -146,6 +169,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-ts');
 
   //define tasks
